@@ -1,6 +1,5 @@
 package org.academiadecodigo.thefellowshift.game;
 
-import com.sun.source.tree.ForLoopTree;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.thefellowshift.consumable.Consumable;
@@ -16,7 +15,7 @@ public class Game {
 
     private Field field;
     private Snake snake;
-    private BasicTimer basicTimer = new BasicTimer(17);
+    private BasicTimer basicTimer = new BasicTimer(18);
     private boolean isGameOver = false;
     private Consumable food = new Food(ConsumableType.FOOD, Color.WHITE);
     private KeyboardHandler keyboardHandler;

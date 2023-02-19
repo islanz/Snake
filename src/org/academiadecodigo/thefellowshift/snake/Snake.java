@@ -1,6 +1,7 @@
 package org.academiadecodigo.thefellowshift.snake;
 
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.thefellowshift.consumable.Consumable;
 import org.academiadecodigo.thefellowshift.consumable.Food;
 import org.academiadecodigo.thefellowshift.enumerable.Direction;
@@ -14,7 +15,7 @@ public class Snake implements KeyHandler {
     private LinkedList<SnakeSegment> snake;
     private int length = 7;
     private boolean isDirectionChanging;
-    private transient boolean  isPaused = false;
+    private boolean isPaused = false;
 
     public Snake() {
         snake = new LinkedList<>();
@@ -22,8 +23,9 @@ public class Snake implements KeyHandler {
         for (int i = length - 1; i >= 0; i--) {
             snake.add(new SnakeSegment(FieldImpl.COLS / 2 + i, FieldImpl.ROWS / 2, Direction.RIGHT));
         }
-
+        snake.get(0).show();
     }
+
 
     public void move() {
         if(isPaused) return;
@@ -64,7 +66,10 @@ public class Snake implements KeyHandler {
         if (y > FieldImpl.ROWS - 1) {
             y = 0;
         }
+
+        snake.getFirst().hide();
         snake.addFirst(new SnakeSegment(x, y, headDirection));
+        snake.getFirst().show();
         tail.deleteSegment();
         snake.removeLast();
         isDirectionChanging = false;
@@ -102,6 +107,7 @@ public class Snake implements KeyHandler {
         System.out.println(snake.size());
 
     }
+
 
     public boolean checkSnakeCollision() {
 
