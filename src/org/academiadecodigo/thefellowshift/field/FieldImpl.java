@@ -2,13 +2,14 @@ package org.academiadecodigo.thefellowshift.field;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class FieldImpl implements Field {
     public static final int PADDING = 0;
     public static final int CELL_SIZE = 30;
-    public static final int COLS = 54;
-    public static final int ROWS = 30;
-    private Rectangle rectangle;
+    public static final int COLS = 43;
+    public static final int ROWS = 24;
+
     private int width;
     private int height;
 
@@ -18,9 +19,11 @@ public class FieldImpl implements Field {
     }
 
     public void init() {
-        rectangle = new Rectangle(PADDING, PADDING, width, height);
-        rectangle.setColor(Color.BLACK);
-        rectangle.fill();
+        Picture background = new Picture();
+        background.load("background.png");
+        background.draw();
+        System.out.println(background);
+
     }
 
     public int rowToY(int row) {

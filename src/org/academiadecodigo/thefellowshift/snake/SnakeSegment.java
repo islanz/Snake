@@ -14,7 +14,7 @@ public class SnakeSegment extends Node {
         super(x, y);
         this.currentDirection = currentDirection;
         snakeSegment = new Rectangle(super.getX() * FieldImpl.CELL_SIZE, super.getY() * FieldImpl.CELL_SIZE, FieldImpl.CELL_SIZE, FieldImpl.CELL_SIZE);
-        snakeSegment.setColor(Color.PINK);
+        snakeSegment.setColor(Color.GREEN);
         snakeSegment.fill();
     }
 

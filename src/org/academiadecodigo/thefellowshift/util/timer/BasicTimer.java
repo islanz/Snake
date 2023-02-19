@@ -1,4 +1,4 @@
-package org.academiadecodigo.thefellowshift.timer;
+package org.academiadecodigo.thefellowshift.util.timer;
 
 public class BasicTimer {
     private int fps;

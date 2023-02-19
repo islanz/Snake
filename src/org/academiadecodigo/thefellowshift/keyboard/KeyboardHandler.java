@@ -14,7 +14,8 @@ public class KeyboardHandler implements org.academiadecodigo.simplegraphics.keyb
             KeyboardEvent.KEY_UP,
             KeyboardEvent.KEY_DOWN,
             KeyboardEvent.KEY_RIGHT,
-            KeyboardEvent.KEY_LEFT
+            KeyboardEvent.KEY_LEFT,
+            KeyboardEvent.KEY_SPACE,
     };
 
     public KeyboardHandler() {
