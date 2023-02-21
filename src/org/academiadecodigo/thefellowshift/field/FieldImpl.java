@@ -10,12 +10,10 @@ public class FieldImpl implements Field {
     public static final int CELL_SIZE = 30;
     public static final int COLS = 43;
     public static final int ROWS = 24;
-    private int width;
-    private int height;
+    public static final int WIDTH = COLS * CELL_SIZE;
+    public static final int HEIGHT = ROWS * CELL_SIZE;
 
     public FieldImpl() {
-        this.width = COLS * CELL_SIZE;
-        this.height = ROWS * CELL_SIZE;
     }
 
     public void init() {
