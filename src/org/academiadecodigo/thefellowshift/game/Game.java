@@ -1,10 +1,11 @@
 package org.academiadecodigo.thefellowshift.game;
 
+import com.sun.source.tree.ForLoopTree;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
+import org.academiadecodigo.thefellowshift.consumable.Consumable;
 import org.academiadecodigo.thefellowshift.consumable.Food;
-import org.academiadecodigo.thefellowshift.consumable.FoodFactory;
-import org.academiadecodigo.thefellowshift.consumable.enumerable.FoodType;
+import org.academiadecodigo.thefellowshift.consumable.enumerable.ConsumableType;
 import org.academiadecodigo.thefellowshift.field.FieldImpl;
 import org.academiadecodigo.thefellowshift.keyboard.KeyboardHandler;
 import org.academiadecodigo.thefellowshift.util.timer.BasicTimer;
@@ -15,9 +16,9 @@ public class Game {
 
     private Field field;
     private Snake snake;
-    private BasicTimer basicTimer = new BasicTimer(18);
+    private BasicTimer basicTimer = new BasicTimer(17);
     private boolean isGameOver = false;
-    private Food food;
+    private Consumable food = new Food(ConsumableType.FOOD, Color.WHITE);
     private KeyboardHandler keyboardHandler;
     private int score;
 
@@ -56,27 +57,31 @@ public class Game {
             basicTimer.sync();
             snake.move();
 
+
+
+
             if(!isFoodActive) {
                 if (Food.getCounter() % 5 == 0 && Food.getCounter() != 0) {
-                    food = FoodFactory.createSpecialFood();
+                    food = new Food(ConsumableType.FOOD, Color.YELLOW);
                     isFoodActive = true;
                 } else {
-                    food = FoodFactory.createRandomFood();
+                    food = new Food(ConsumableType.FOOD, Color.WHITE);
                     isFoodActive = true;
                 }
             }
 
             if(snake.isCollidingWithConsumable(food)) {
-                food.hide();
+                food.remove();
                 isFoodActive = false;
                 if (((Food.getCounter() - 1) % 5) == 0 && Food.getCounter() != 1) {
                     for(int i = 0; i < 3; i++) {
                         snake.grow();
                     }
+                    score += ConsumableType.FOOD.getSpecialScore();
                 } else {
+                    score += ConsumableType.FOOD.getScore();
                     snake.grow();
                 }
-                score += food.getFoodScore();
                 scoreText.setText(String.format("Score: %s", score));
 
             }
@@ -98,6 +103,5 @@ public class Game {
             }
         }
     }
-
 
 }

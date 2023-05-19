@@ -1,6 +1,5 @@
 package org.academiadecodigo.thefellowshift.field;
 
-import org.academiadecodigo.simplegraphics.graphics.Canvas;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
@@ -10,10 +9,13 @@ public class FieldImpl implements Field {
     public static final int CELL_SIZE = 30;
     public static final int COLS = 43;
     public static final int ROWS = 24;
-    public static final int WIDTH = COLS * CELL_SIZE;
-    public static final int HEIGHT = ROWS * CELL_SIZE;
+
+    private int width;
+    private int height;
 
     public FieldImpl() {
+        this.width = COLS * CELL_SIZE;
+        this.height = ROWS * CELL_SIZE;
     }
 
     public void init() {
